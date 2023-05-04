@@ -1,11 +1,12 @@
 import React, {useEffect,useState} from 'react'
+import axios from 'axios'
 
 export default function Dogimage() {
     const [image, setImage] = useState(" ")
+    
     useEffect(() => {
-    fetch('https://dog.ceo/api/breeds/image/random')
-    .then((data) =>data.json())
-    .then((response) => setImage(response.message))
+    axios.get('https://dog.ceo/api/breeds/image/random')
+    .then((response) => setImage(response.data.message))
     },[]
 
     )
@@ -18,8 +19,7 @@ export default function Dogimage() {
          src={image}
          height="300px"
          width="300px"
-         alt="dog image"
-
+         alt="dog"
          />
     </div>
    )
